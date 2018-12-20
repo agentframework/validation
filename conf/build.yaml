@@ -1,0 +1,5 @@
+# 8.10 will use typescript target ES2017
+
+SERVERLESS:
+  provider:
+    runtime: nodejs8.10

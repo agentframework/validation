@@ -1,0 +1,17 @@
+/.idea/
+/.rpt2_cache/
+/coverage/
+/logs/
+/node_modules/
+/release/
+/package-lock.json
+*.log
+src/**/*.js
+*.js.map
+*.d.ts
+
+# prevent user commit any sensitive information
+**/*.pem
+**/*.crt
+**/*.key
+
