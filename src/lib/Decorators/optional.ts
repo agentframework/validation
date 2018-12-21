@@ -1,6 +1,6 @@
 import { decorateClassField, IAttribute } from 'agentframework';
 
-export function optional() {
+export function optional(): PropertyDecorator {
   return decorateClassField(new OptionalAttribute());
 }
 

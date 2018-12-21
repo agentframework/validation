@@ -1,6 +1,6 @@
 import { decorateClassField, IAttribute } from 'agentframework';
 
-export function mandatory() {
+export function mandatory(): PropertyDecorator {
   return decorateClassField(new MandatoryAttribute());
 }
 

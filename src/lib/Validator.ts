@@ -1,16 +1,14 @@
 import { TypedConstructor } from 'agentframework';
 import { ParseType } from './Parser';
-import * as Ajv from 'ajv';
-import { ValidateFunction } from 'ajv';
 import { IValidator } from './IValidator';
 import { ValidationError, ValidationException } from './ValidationException';
-
+import * as Ajv from 'ajv';
 const SymbolType = Symbol();
 const SymbolValidate = Symbol();
 
 export class Validator<T> implements IValidator<T> {
   private readonly [SymbolType]: TypedConstructor<T>;
-  private readonly [SymbolValidate]: ValidateFunction;
+  private readonly [SymbolValidate]: any;
 
   constructor(type: TypedConstructor<T>) {
     const schema = <any>{};

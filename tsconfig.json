@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es2017",
+    "target": "es6",
+    "lib": ["es6", "es5"],
     "module": "commonjs",
     "declaration": false,
     "removeComments": true,
@@ -16,12 +17,7 @@
     "suppressImplicitAnyIndexErrors": true,
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
-    "typeRoots": [
-      "node_modules/@types/"
-    ],
-    "types": [
-      "jasmine"
-    ]
+    "types": ["jasmine"]
   },
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "test", "**/*.spec.ts"]
 }

@@ -46,9 +46,9 @@ abbrev@1.0.x:
   integrity sha1-kbR5JYinc4wl813W9jdSovh3YTU=
 
 agentframework@^0.9.20:
-  version "0.9.20"
-  resolved "https://registry.yarnpkg.com/agentframework/-/agentframework-0.9.20.tgz#b9ca66b9361d2d1c61a2f4412b055036596ead61"
-  integrity sha512-MH9UqK3XA9MJUw8/Qvv+yUiAim5z/oldF/LOUXjv8C1wLrKRKuVieE9ySppSPwp7Z6So2wYy2HFbYFJEqqTSzA==
+  version "0.9.21"
+  resolved "https://registry.yarnpkg.com/agentframework/-/agentframework-0.9.21.tgz#1d1878f1964daa5df788738db9111b97bd8cd450"
+  integrity sha512-wnLpZsWsZZfNjNf1wT6f7v9p47AsqBaLGnyys7W2ZuhBgdNYocCam2QPvCwD1weXzksCK1Ndvw4hZz7ISdcBng==
 
 ajv@*, ajv@^6.6.2:
   version "6.6.2"
