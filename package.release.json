@@ -1,6 +1,6 @@
 {
   "name": "@agentframework/validation",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "node": ">=8.5.0"
   },
@@ -15,7 +15,7 @@
   ],
   "author": "Ling Zhang",
   "dependencies": {
-    "agentframework": "^0.9.20",
+    "agentframework": "^0.9.21",
     "ajv": "^6.6.2"
   }
 }

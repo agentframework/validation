@@ -20,8 +20,7 @@
       "node_modules/@types/"
     ],
     "types": [
-      "jasmine",
-      "node"
+      "jasmine"
     ]
   },
   "exclude": ["node_modules"]
