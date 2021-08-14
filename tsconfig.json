@@ -5,6 +5,7 @@
     "module": "commonjs",
     "locale": "en-US",
     "strict": true,
+    "moduleResolution": "node",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "noImplicitAny": true,
