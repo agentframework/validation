@@ -2,7 +2,7 @@ import { Class } from 'agentframework';
 import { ParseType } from './Parser';
 import { IValidator } from './IValidator';
 import { ValidationError, ValidationException } from './ValidationException';
-import Ajv from 'ajv';
+import * as Ajv from 'ajv';
 const SymbolType = Symbol();
 const SymbolValidate = Symbol();
 

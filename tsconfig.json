@@ -5,16 +5,8 @@
     "module": "commonjs",
     "locale": "en-US",
     "strict": true,
-    "keyofStringsOnly": true,
-    "importHelpers": false,
-    "declaration": true,
-    "removeComments": true,
-    "moduleResolution": "node",
-    "sourceMap": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "noImplicitThis": true,
@@ -22,7 +14,8 @@
     "noImplicitReturns": true,
     "preserveConstEnums": true,
     "suppressImplicitAnyIndexErrors": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": ["lib", "src", "test", "tools"],
   "exclude": ["node_modules"]

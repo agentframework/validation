@@ -23,7 +23,6 @@ export function GetSchemaIdentifier(value: any): { type: string; format?: string
 }
 
 export function ParseType(schema: Schema, value: Class<any>): SchemaDefinition {
-  console.log('type', value);
   const type = Reflector(value);
   const properties = {};
   const required = <any>[];
