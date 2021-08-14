@@ -1,11 +1,12 @@
-import { mandatory, optional, Validate } from '../../src/lib';
+import { mandatory, optional } from '@typescript-decorators/common';
+import { Validate } from '../../lib';
 
 class NumberTest {
   @mandatory()
-  required: number;
+  required!: number;
 
   @optional()
-  optional: number;
+  optional!: number;
 }
 
 describe('Number Tests', () => {
@@ -14,7 +15,7 @@ describe('Number Tests', () => {
       const Tester = Validate(NumberTest);
       expect(
         Tester.test({
-          required: 1
+          required: 1,
         })
       ).toBeTruthy();
     });
@@ -32,7 +33,7 @@ describe('Number Tests', () => {
       const Tester = Validate(NumberTest);
       expect(
         Tester.test({
-          required: '1'
+          required: '1',
         })
       ).toBeFalsy();
     });
@@ -42,7 +43,7 @@ describe('Number Tests', () => {
       expect(
         Tester.test({
           required: 1,
-          optional: ''
+          optional: '',
         })
       ).toBeFalsy();
     });

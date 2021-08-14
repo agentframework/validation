@@ -1,18 +1,19 @@
-import { mandatory, optional, Validate, ValidationException } from '../../src/lib';
+import { mandatory, optional } from '@typescript-decorators/common';
+import { Validate, ValidationException } from '../../lib';
 
 class User {
   @mandatory()
-  id: number;
+  id!: number;
 
   @mandatory()
-  name: string;
+  name!: string;
 
   @optional()
-  email: string;
+  email!: string;
 }
 
 describe('Validator Tests', () => {
-  
+
   describe('#test()', () => {
     it('should not validate empty object', () => {
       const UserValidator = Validate(User);

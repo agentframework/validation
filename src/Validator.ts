@@ -1,16 +1,16 @@
-import { TypedConstructor } from 'agentframework';
+import { Class } from 'agentframework';
 import { ParseType } from './Parser';
 import { IValidator } from './IValidator';
 import { ValidationError, ValidationException } from './ValidationException';
-import * as Ajv from 'ajv';
+import Ajv from 'ajv';
 const SymbolType = Symbol();
 const SymbolValidate = Symbol();
 
-export class Validator<T> implements IValidator<T> {
-  private readonly [SymbolType]: TypedConstructor<T>;
+export class Validator<T extends object> implements IValidator<T> {
+  private readonly [SymbolType]: Class<T>;
   private readonly [SymbolValidate]: any;
 
-  constructor(type: TypedConstructor<T>) {
+  constructor(type: Class<T>) {
     const schema = <any>{};
     const root = ParseType(schema, type);
     Object.assign(schema, root);
@@ -45,11 +45,11 @@ export class Validator<T> implements IValidator<T> {
     if (!result) {
       const errors = this[SymbolValidate].errors;
       if (Array.isArray(errors)) {
-        return errors.map(error => {
+        return errors.map((error) => {
           return {
             dataPath: error.dataPath,
             params: error.params,
-            message: error.message
+            message: error.message,
           };
         });
       }

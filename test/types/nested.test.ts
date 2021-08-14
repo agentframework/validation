@@ -1,16 +1,17 @@
-import { mandatory, optional, Validate } from '../../src/lib';
+import { mandatory, optional } from '@typescript-decorators/common';
+import { Validate } from '../../lib';
 
 class Project {
   @mandatory()
-  name: string;
+  name!: string;
 }
 
 class User {
   @mandatory()
-  name: string;
+  name!: string;
 
   @optional()
-  project: Project;
+  project!: Project;
 }
 
 describe('Nested Tests', () => {

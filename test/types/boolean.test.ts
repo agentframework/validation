@@ -1,11 +1,12 @@
-import { mandatory, optional, Validate } from '../../src/lib';
+import { Validate } from '../../lib';
+import { mandatory, optional } from '@typescript-decorators/common';
 
 class BooleanTest {
   @mandatory()
-  required: boolean;
+  required!: boolean;
 
   @optional()
-  optional: boolean;
+  optional!: boolean;
 }
 
 describe('Boolean Tests', () => {

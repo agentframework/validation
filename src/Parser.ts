@@ -1,6 +1,6 @@
-import { Constructor, Reflector } from 'agentframework';
+import { MandatoryAttribute } from '@attributes/common';
+import { Class, Reflector } from 'agentframework';
 import { Schema, SchemaDefinition } from './Schema';
-import { MandatoryAttribute } from './Decorators/mandatory';
 
 export function GetSchemaIdentifier(value: any): { type: string; format?: string; minLength?: number } | false {
   if (value === null) {
@@ -22,28 +22,29 @@ export function GetSchemaIdentifier(value: any): { type: string; format?: string
   }
 }
 
-export function ParseType(schema: Schema, value: Constructor): SchemaDefinition {
+export function ParseType(schema: Schema, value: Class<any>): SchemaDefinition {
+  console.log('type', value);
   const type = Reflector(value);
   const properties = {};
   const required = <any>[];
-  for (const p of type.getProperties()) {
-    if (typeof p.targetKey !== 'string') {
+  for (const p of type.getOwnProperties()) {
+    if (typeof p.key !== 'string') {
       // Do not validate symbols
       continue;
     }
-    const mandatory = p.value().hasAttribute(MandatoryAttribute);
+    const mandatory = p.hasOwnAttribute(MandatoryAttribute);
     if (mandatory) {
-      required.push(p.targetKey);
+      required.push(p.key);
     }
     const definedType = GetSchemaIdentifier(p.type);
     if (definedType) {
       if (mandatory && definedType.type === 'string') {
         definedType.minLength = 1;
       }
-      properties[p.targetKey] = definedType;
-    } else {
-      properties[p.targetKey] = {
-        $ref: '#/definitions/' + p.type.name
+      properties[p.key] = definedType;
+    } else if (p.type) {
+      properties[p.key] = {
+        $ref: '#/definitions/' + p.type.name,
       };
       const definitions = (schema.definitions = schema.definitions || {});
       definitions[p.type.name] = ParseType(schema, p.type);
@@ -52,6 +53,6 @@ export function ParseType(schema: Schema, value: Constructor): SchemaDefinition 
   return {
     type: 'object',
     properties,
-    required
+    required,
   };
 }

@@ -1,11 +1,12 @@
-import { mandatory, optional, Validate } from '../../src/lib';
+import { Validate } from '../../lib';
+import { mandatory, optional } from '@typescript-decorators/common';
 
 class DateTest {
   @mandatory()
-  required: Date;
+  required!: Date;
 
   @optional()
-  optional: Date;
+  optional!: Date;
 }
 
 describe('Date Tests', () => {

@@ -1,5 +1,3 @@
-import { Exception } from 'agentframework';
-
 // errors [
 //   { keyword: 'type',
 //     dataPath: '.id',
@@ -19,19 +17,21 @@ export interface ValidationError {
   message?: string;
 }
 
-export class ValidationException extends Exception {
-  context: Array<ValidationError>;
+export class ValidationException extends Error {
+  readonly context: Array<ValidationError>;
 
   constructor(errors?: Array<any> | null) {
     super('Validation failed');
     if (Array.isArray(errors)) {
-      this.context = errors.map(error => {
+      this.context = errors.map((error) => {
         return {
           dataPath: error.dataPath,
           params: error.params,
-          message: error.message
+          message: error.message,
         };
       });
+    } else {
+      this.context = [];
     }
   }
 }

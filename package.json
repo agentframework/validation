@@ -6,23 +6,15 @@
     "node": ">=8.5.0"
   },
   "description": "Zero-configuration validation framework",
-  "main": "src/lib/index.ts",
+  "main": "lib/index.ts",
   "scripts": {
-    "start": "node_modules/.bin/nodemon --config tools/testmon.json",
-    "cov": "npm run test:prepare && npm run test:coverage",
-    "debug": "node_modules/.bin/nodemon --config tools/debugmon.json",
-    "test": "npm run lint && npm run test:build && npm run test:prepare && npm run test:unit",
-    "test:debug": "TARGET=debug node -r ts-node/register --inspect-brk tools/jasmine.ts",
-    "test:build": "node_modules/.bin/tsc -p tsconfig.json --noEmit",
-    "test:prepare": "rm -rf test/minimal/data",
-    "test:unit": "node -r ts-node/register tools/jasmine.ts",
-    "test:coverage": "node -r ts-node/register node_modules/.bin/istanbul cover --config=tools/istanbul.yaml node_modules/.bin/jasmine JASMINE_CONFIG_PATH=tools/jasmine.full.json",
-    "clean": "npx ts clean",
-    "lint": "npx standard --pretty",
-    "build": "npm run clean && npm run build:ts",
-    "build:ts": "npx ts build",
-    "release": "npm run build && npm run release:npm",
-    "release:npm": "cd ./release && npm publish --access public"
+    "cov": "npm run coverage && npm run report",
+    "dev": "tsmon tools/jasmine.ts --config=tools/jasmine.dev.json",
+    "build": "tsc --noEmit",
+    "lint": "standard --pretty",
+    "test": "ts-node tools/jasmine.ts --config=tools/jasmine.json",
+    "coverage": "nyc npm run test",
+    "report": "open coverage/lcov-report/index.html"
   },
   "prettier": {
     "printWidth": 120,
@@ -30,12 +22,16 @@
   },
   "author": "Ling Zhang",
   "devDependencies": {
-    "@e2/cli-service": "~1",
-    "@types/ajv": "^1.0.0",
+    "@types/jasmine": "^3.5.0",
+    "jasmine": "^3.5.0",
+    "jasmine-spec-reporter": "^7.0.0",
+    "typescript": "^4.3.5",
     "typescript-standard": "^0.3.36"
   },
   "dependencies": {
-    "agentframework": "^0.9.20",
+    "@attributes/common": "^1.0.0-rc.39",
+    "@typescript-decorators/common": "^1.0.0-rc.39",
+    "agentframework": "^2.0.0-rc.20210814",
     "ajv": "^6.6.2"
   }
 }
