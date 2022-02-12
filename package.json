@@ -31,6 +31,6 @@
   "dependencies": {
     "@attributes/common": "^1.0.0-rc.20210814",
     "@typescript-decorators/common": "^1.0.0-rc.20210814",
-    "ajv": "^6.6.2"
+    "ajv": "^6.12.3"
   }
 }
